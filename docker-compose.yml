@@ -1,0 +1,5 @@
+CircuitBreakerTime:
+  image: ibmcom/swift-ubuntu:latest
+  volumes:
+    - .:/root/CircuitBreakerTime
+  command: bash -c "cd /root/CircuitBreakerTime && swift build && ./.build/debug/CircuitBreakerTime"
