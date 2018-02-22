@@ -20,13 +20,20 @@
 //OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //SOFTWARE.
 
-import CircuitBreakerTimeLib
-import Dispatch
 import Foundation
 
-#if os(Linux)
-    srand(UInt32(time(nil)))
-#endif
-
-let application = Application()
-application.start()
+// MARK: - Public Class Attributes
+extension URLSession {
+    
+    /// The default session to use for performing network requests.
+    static var defaultSession: URLSession {
+        let session: URLSession
+        #if os(Linux)
+            let sessionConfiguration = URLSessionConfiguration.default
+            session = URLSession(configuration: sessionConfiguration)
+        #else
+            session = URLSession.shared
+        #endif
+        return session
+    }
+}

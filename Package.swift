@@ -13,7 +13,7 @@ let package = Package(
     ],
     dependencies: [
         .package(url: "https://github.com/IBM-Swift/CircuitBreaker.git", .upToNextMajor(from: "5.0.0")),
-        .package(url: "https://github.com/eman6576/SGCircuitBreaker.git", .upToNextMajor(from: "1.0.0")),
+        .package(url: "https://github.com/eman6576/SGCircuitBreaker.git", .upToNextMajor(from: "1.1.2")),
         .package(url: "https://github.com/IBM-Swift/Kitura.git", .upToNextMajor(from: "2.2.0")),
         .package(url: "https://github.com/IBM-Swift/HeliumLogger.git", .upToNextMajor(from: "1.7.1"))
     ],

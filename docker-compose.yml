@@ -1,5 +1,7 @@
-CircuitBreakerTime:
+app:
   image: ibmcom/swift-ubuntu:latest
+  ports:
+    - "8090:8090"
   volumes:
     - .:/root/CircuitBreakerTime
-  command: bash -c "cd /root/CircuitBreakerTime && swift build && ./.build/debug/CircuitBreakerTime"
+  command: bash -c "cd /root/CircuitBreakerTime && swift package reset && swift package clean && swift build && ./.build/debug/CircuitBreakerTime"

@@ -10,24 +10,27 @@ help:
 .DEFAULT_GOAL := help
 
 project:
-	swift package generate-xcodeproj --xcconfig-overrides Package.xcconfig
+	swift package generate-xcodeproj
 
 open_xcodeproj:
 	open CircuitBreakerTime.xcodeproj
 
 build:
-	swift build -Xswiftc "-target" -Xswiftc "x86_64-apple-macosx10.12"
+	swift build
 
-clean: ## Cleans the project
+clean: ## Resets and cleans the project
+	swift package reset
 	swift package clean
 
 run: 
 	./.build/debug/CircuitBreakerTime
 
-test_linux: ## Complies and runs the project in Linux using Docker
+run_linux: ## Complies and runs the project in Linux using Docker
 	docker-compose up
 
 # Target Dependencies
 all: build project open_xcodeproj ## Complies, generates a new xcodeproj file and opens the project in Xcode
+
+clean_all: clean all ### Reset and cleans, complies, generates a new xcodeproj file and opens the project in Xcode
 
 run_local: build run ## Complies and runs the project locally
