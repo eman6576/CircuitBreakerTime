@@ -28,6 +28,25 @@ run:
 run_linux: ## Complies and runs the project in Linux using Docker
 	docker-compose up
 
+# Endpoints
+test_base: ## Tests the base url
+	curl -X GET http://localhost:8090
+
+test_swifty_success: ## Tests the success route for SGCircuitBreaker
+	curl -X GET http://localhost:8090/swiftyguerrero/success
+
+test_swifty_success_delay: ## Tests the success delay route for SGCircuitBreaker
+	curl -X GET http://localhost:8090/swiftyguerrero/success-delay
+
+test_swifty_failure: ## Tests the failure route for SGCircuitBreaker
+	curl -X GET http://localhost:8090/swiftyguerrero/failure
+
+test_ibm_success: ## Tests the success route for IBM-Swift CircuitBreaker
+	curl -X GET http://localhost:8090/ibm/success
+
+test_ibm_failure: ## Tests the failure route for IBM-Swift CircuitBreaker
+	curl -X GET http://localhost:8090/ibm/failure
+
 # Target Dependencies
 all: build project open_xcodeproj ## Complies, generates a new xcodeproj file and opens the project in Xcode
 
